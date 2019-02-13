@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import style from './credit-simulator.scss';
-import SimpleSlider from '../slider';
 import SliderAndInfo from '../slider-and-info';
+
+const {
+  background,
+  container,
+  title,
+  subContainer,
+  installments,
+  buttons,
+  creditButton,
+  detailsButton,
+} = style;
 
 class CreditSimulator extends Component {
   constructor(props) {
@@ -21,24 +31,26 @@ class CreditSimulator extends Component {
   };
 
   render() {
+    const { totalAmount, term } = this.state;
+
     const nf = new Intl.NumberFormat();
-    const numberWithComma = `$${nf.format(this.state.totalAmount)}`;
+    const numberWithComma = `$${nf.format(totalAmount)}`;
 
     return (
-      <div className={style.background}>
-        <div className={style.container}>
-          <div className={style.title}>
+      <div className={background}>
+        <div className={container}>
+          <div className={title}>
             <h1>Simulá tu Crédito</h1>
           </div>
 
-          <div className={style.subContainer}>
+          <div className={subContainer}>
             {
               <SliderAndInfo
                 title="MONTO TOTAL"
                 inputValue={numberWithComma}
                 minRange={5000}
                 maxRange={50000}
-                sliderValue={this.state.totalAmount}
+                sliderValue={totalAmount}
                 setValue={this.setTotalAmount}
                 rangeText={{ start: '$5.000', end: '$50.000' }}
               />
@@ -47,22 +59,24 @@ class CreditSimulator extends Component {
             {
               <SliderAndInfo
                 title="PLAZO"
-                inputValue={this.state.term}
+                inputValue={`${term}`}
                 minRange={3}
                 maxRange={24}
-                sliderValue={this.state.term}
+                sliderValue={term}
                 setValue={this.setTerm}
                 rangeText={{ start: '3', end: '24' }}
               />
             }
 
-            <div className={style.installments}>
+            <div className={installments}>
               <h3>CUOTA FIJA POR MES</h3>
-              <h1>$ {nf.format(this.state.totalAmount / this.state.term)}</h1>
+              <h1>$ {nf.format(totalAmount / term)}</h1>
             </div>
-            <div className={style.buttons}>
-              <button className={style.creditButton}>OBTENÉ CRÉDITO</button>
-              <button className={style.detailsButton}>
+            <div className={buttons}>
+              <button type="button" className={creditButton}>
+                OBTENÉ CRÉDITO
+              </button>
+              <button type="button" className={detailsButton}>
                 VER DETALLES DE <br />
                 CUOTAS
               </button>

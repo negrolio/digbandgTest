@@ -1,32 +1,60 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from './slider-and-info.scss';
 import SimpleSlider from '../slider';
 
-const SliderAndInfo = props => (
-  <div className={style.container}>
-    <div className={style.inputContainer}>
-      <p>{props.title}</p>
+const {
+  container,
+  inputContainer,
+  input,
+  sliderContainer,
+  rangeAmount,
+} = style;
+
+const SliderAndInfo = ({
+  title,
+  inputValue,
+  sliderValue,
+  setValue,
+  minRange,
+  maxRange,
+  rangeText,
+}) => (
+  <div className={container}>
+    <div className={inputContainer}>
+      <p>{title}</p>
       <input
         type="text"
-        step="0.01"
-        value={props.inputValue}
+        value={inputValue}
         onChange={() => {}}
-        className={style.input}
+        className={input}
       />
     </div>
-    <div className={style.sliderContainer}>
+    <div className={sliderContainer}>
       <SimpleSlider
-        value={props.sliderValue}
-        setValue={props.setValue}
-        min={props.minRange}
-        max={props.maxRange}
+        value={sliderValue}
+        setValue={setValue}
+        min={minRange}
+        max={maxRange}
       />
-      <div className={style.rangeAmount}>
-        <p>{props.rangeText.start}</p>
-        <p>{props.rangeText.end}</p>
+      <div className={rangeAmount}>
+        <p>{rangeText.start}</p>
+        <p>{rangeText.end}</p>
       </div>
     </div>
   </div>
 );
+
+const { string, number, func, objectOf } = PropTypes;
+
+SliderAndInfo.propTypes = {
+  title: string,
+  inputValue: string,
+  sliderValue: number,
+  setValue: func,
+  minRange: number,
+  maxRange: number,
+  rangeText: objectOf(PropTypes.string),
+};
 
 export default SliderAndInfo;
