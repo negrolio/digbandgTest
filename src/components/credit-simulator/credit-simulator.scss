@@ -1,0 +1,62 @@
+.background{
+  background-color: #06487A;
+  width: 50%;
+  margin: auto;
+  padding: 60px 0;
+  background-image: linear-gradient(to top, #003b67, #06487a);
+}
+
+.container{
+  background-color: #003B67;
+  width: 80%;
+  margin: auto;
+  font-family: 'Montserrat';
+  padding: 30px 0;
+}
+
+.title{
+  text-align: center;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.installments{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: auto;
+  color: white;
+  align-items: center;
+  background-color: #00355D;
+}
+
+.subContainer{
+  width: 80%;
+  margin: auto;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons button{
+  color:white;
+  border:unset;
+  font-weight: 600;
+}
+
+button:hover{
+  cursor:pointer
+}
+
+.creditButton{
+  background-color: #17AA8D;
+  width: 68%;
+  padding: 15px;
+  font-size: 1.5em;
+}
+
+.detailsButton{
+  background-color: #0B548B;
+}
